@@ -1,0 +1,19 @@
+#include <SoftwareSerial.h>
+
+int Rx_pin =2;  //from RX Neo-6M to GND or disconected on Nano Board
+int Tx_pin =3;  //from TX Neo-6M to D2 on Nano Booard
+SoftwareSerial SerialGPS(Rx_pin, Tx_pin);
+
+void setup()
+{
+  Serial.begin(9600);
+  SerialGPS.begin(9600);
+}
+
+void loop()
+{
+  while (SerialGPS.available() > 0)
+  Serial.write(SerialGPS.read());
+  
+  
+}
